@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Centro;
+use App\Models\Nivel;
+use App\Http\Resources\NivelResource;
 use Illuminate\Http\Request;
-use App\Http\Resources\CentroResource;
 
-class CentroController extends Controller
+class NivelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class CentroController extends Controller
      */
     public function index()
     {
-        return CentroResource::collection(Centro::paginate());
+        return NivelResource::collection(Nivel::paginate());
     }
 
     /**
@@ -27,47 +27,48 @@ class CentroController extends Controller
      */
     public function store(Request $request)
     {
-        $centro = json_decode($request->getContent(), true);
 
-        $centro = Centro::create($centro);
+        $nivel = json_decode($request->getContent(), true);
 
-        return new CentroResource($centro);
+        $nivel = Nivel::create($nivel);
+
+        return new NivelResource($nivel);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Centro  $centro
+     * @param  \App\Models\Nivel  $nivel
      * @return \Illuminate\Http\Response
      */
-    public function show(Centro $centro)
+    public function show(Nivel $nivel)
     {
-        return new CentroResource($centro);
+        return new NivelResource($nivel);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Centro  $centro
+     * @param  \App\Models\Nivel  $nivel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Centro $centro)
+    public function update(Request $request, Nivel $nivel)
     {
-        $centroData = json_decode($request->getContent(), true);
-        $centro->update($centroData);
+        $nivelData = json_decode($request->getContent(), true);
+        $nivel->update($nivelData);
 
-        return new CentroResource($centro);
+        return new NivelResource($nivel);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Centro  $centro
+     * @param  \App\Models\Nivel  $nivel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Centro $centro)
+    public function destroy(Nivel $nivel)
     {
-        $centro->delete();
+        $nivel->delete();
     }
 }
