@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CentroController;
+use App\Http\Controllers\API\Faltas_alumnoController;
 use App\Http\Controllers\API\NivelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,8 @@ Route::apiResource('niveles', NivelController::class)
 ->parameters([
     'niveles' => 'nivel'
 ]);
+
+Route::apiResource('faltas_alumnos', Faltas_alumnoController::class);
 
 Route::any('/{any}', function (ServerRequestInterface $request) {
     $config = new Config([
