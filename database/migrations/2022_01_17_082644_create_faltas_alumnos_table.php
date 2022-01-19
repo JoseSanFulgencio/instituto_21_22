@@ -14,7 +14,7 @@ class CreateFaltasAlumnosTable extends Migration
     public function up()
     {
         Schema::create('faltas_alumnos', function (Blueprint $table) {
-            $table->bigInteger('idfaltasalumno')->autoIncrement();
+            $table->id('idfaltasalumno');
             $table->bigInteger('alumno');
             $table->boolean('asiste')->nullable();
             $table->boolean('retraso')->nullable();

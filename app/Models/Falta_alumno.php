@@ -11,7 +11,7 @@ class Falta_alumno extends Model
     protected $table = 'faltas_alumnos';
 
     protected $fillable = [
-        'nombre',
+        'alumno',
         'asiste',
         'retraso',
         'justificada'

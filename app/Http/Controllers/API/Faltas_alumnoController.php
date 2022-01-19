@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Falta_alumnoResource;
 use App\Models\Falta_alumno;
 use Illuminate\Http\Request;
+use App\Http\Resources\Falta_alumnoResource;
 
 class Faltas_alumnoController extends Controller
 {
@@ -63,7 +63,7 @@ class Faltas_alumnoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Falta_alumno  $falta_alumno
+     * @param  \App\Models\Falta_alumno $falta_alumno
      * @return \Illuminate\Http\Response
      */
     public function destroy(Falta_alumno $falta_alumno)
