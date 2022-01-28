@@ -30,6 +30,11 @@ class CentroController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request->user()->cannot('create', Centro::class)) {
+            abort(403, "No eres administrador");
+        }
+
         $centro = json_decode($request->getContent(), true);
 
         $centro = Centro::create($centro);
@@ -61,7 +66,7 @@ class CentroController extends Controller
     public function update(Request $request, Centro $centro)
     {
 
-        if (! Gate::allows('update-centro', $centro)) {
+        if ($request->user()->cannot('update', $centro)) {
             abort(403);
         }
 
