@@ -10,6 +10,21 @@ class CentroPolicy
 {
     use HandlesAuthorization;
 
+
+    /**
+     * Perform pre-authorization checks.
+     *
+     * @param  \App\Models\User  $user
+     * @param  string  $ability
+     * @return void|bool
+     */
+    public function before(User $user, $ability)
+    {
+        if ($user->isAdministrator()) {
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -65,7 +80,7 @@ class CentroPolicy
      */
     public function delete(User $user, Centro $centro)
     {
-        //
+        return $user->id === $centro->coordinador;
     }
 
     /**

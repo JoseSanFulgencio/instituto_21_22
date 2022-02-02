@@ -10,6 +10,17 @@ use Illuminate\Support\Facades\Http;
 
 class CentroController extends Controller
 {
+
+        /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Centro::class, 'centro');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -31,9 +42,11 @@ class CentroController extends Controller
     public function store(Request $request)
     {
 
-        if ($request->user()->cannot('create', Centro::class)) {
+        //$this->authorize('create', $centro);
+
+        /*if ($request->user()->cannot('create', Centro::class)) {
             abort(403, "No eres administrador");
-        }
+        }*/
 
         $centro = json_decode($request->getContent(), true);
 
@@ -66,9 +79,7 @@ class CentroController extends Controller
     public function update(Request $request, Centro $centro)
     {
 
-        if ($request->user()->cannot('update', $centro)) {
-            abort(403);
-        }
+        //$this->authorize('update', $centro);
 
         $centroData = json_decode($request->getContent(), true);
         $centro->update($centroData);
@@ -84,6 +95,8 @@ class CentroController extends Controller
      */
     public function destroy(Centro $centro)
     {
+        //$this->authorize('delete', $centro);
+
         $centro->delete();
     }
 }
