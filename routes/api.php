@@ -78,7 +78,8 @@ Route::apiResource('faltas_profesores', falta_profesorController::class)
     'faltas_profesores' => 'falta_profesor'
 ]);
 
-Route::apiResource('grupos', GrupoController::class);
+Route::middleware('auth:sanctum')->
+    apiresource('grupos', GrupoController::class);
 
 Route::apiResource('tutorizados', TutorizadoController::class);
 

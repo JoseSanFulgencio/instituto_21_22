@@ -66,7 +66,11 @@ class CentroPolicy
      */
     public function update(User $user, Centro $centro)
     {
-        return $user->id === $centro->coordinador;
+        if (($centroCoordinado = $user->centroCoordinado) && ($centro->id == $centroCoordinado->id)) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
