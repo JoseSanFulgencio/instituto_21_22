@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\NotaResource;
 use App\Models\Nota;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class NotaController extends Controller
      */
     public function index()
     {
-        //
+        return NotaResource::collection(Nota::paginate(20));
     }
 
     /**
