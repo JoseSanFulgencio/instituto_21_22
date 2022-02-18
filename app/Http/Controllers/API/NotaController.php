@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class NotaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Nota::class, 'nota');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +33,11 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nota = json_decode($request->getContent(), true);
+
+        $nota = Nota::create($nota);
+
+        return new NotaResource($nota);
     }
 
     /**
@@ -50,7 +60,10 @@ class NotaController extends Controller
      */
     public function update(Request $request, Nota $nota)
     {
-        //
+        $notaData = json_decode($request->getContent(), true);
+        $nota->update($notaData);
+
+        return new NotaResource($nota);
     }
 
     /**
@@ -61,6 +74,6 @@ class NotaController extends Controller
      */
     public function destroy(Nota $nota)
     {
-        //
+        $nota->delete();
     }
 }

@@ -18,7 +18,7 @@ class NotaPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class NotaPolicy
      */
     public function view(User $user, Nota $nota)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class NotaPolicy
      */
     public function create(User $user)
     {
-        return $user->role == 'profesor';
+        return $user->isProfessor;
     }
 
     /**
@@ -53,7 +53,7 @@ class NotaPolicy
      */
     public function update(User $user, Nota $nota)
     {
-        return $user->id === $nota->coordinador;
+        return $user->isProfessor;
     }
 
     /**
@@ -65,7 +65,7 @@ class NotaPolicy
      */
     public function delete(User $user, Nota $nota)
     {
-        return $user->role == 'profesor';
+        return $user->isProfessor;
     }
 
     /**
@@ -89,6 +89,6 @@ class NotaPolicy
      */
     public function forceDelete(User $user, Nota $nota)
     {
-        //
+        return $user->isProfessor;
     }
 }

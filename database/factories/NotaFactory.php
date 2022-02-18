@@ -14,9 +14,10 @@ class NotaFactory extends Factory
     public function definition()
     {
         return [
-            'evaluacion' => $this->faker->evaluacion(),
-            'nota' => $this->faker->nota(),
-            'email_verified_at' => now(),
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'materia_id' => $this->faker->numberBetween(1, 10),
+            'evaluacion' => $this->faker->numberBetween(1, 3),
+            'nota' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

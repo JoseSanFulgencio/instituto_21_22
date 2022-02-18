@@ -14,6 +14,9 @@ class NotaResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'users' => GrupoResource::collection($this->users),
+        ];
     }
 }

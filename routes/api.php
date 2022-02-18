@@ -64,9 +64,11 @@ Route::middleware('auth:sanctum')->
     apiResource('centros', CentroController::class)
 ;
 
-Route::apiResource('matriculas', MatriculaController::class);
+Route::apiResource('matriculas', MatriculaController::class)
+    ->middleware('auth:sanctum');
 
-Route::apiResource('notas', NotaController::class);
+Route::apiResource('notas', NotaController::class)
+    ->middleware('auth:sanctum');
 
 Route::apiResource('niveles', NivelController::class)
 ->parameters([
