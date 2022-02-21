@@ -18,5 +18,6 @@ class NotaResource extends JsonResource
             'id' => $this->id,
             'users' => GrupoResource::collection($this->users),
         ];
+        //Sin terminar
     }
 }

@@ -53,7 +53,7 @@ class NotaPolicy
      */
     public function update(User $user, Nota $nota)
     {
-        return $user->isProfessor;
+        return $user->isProfessor == 1;
     }
 
     /**
