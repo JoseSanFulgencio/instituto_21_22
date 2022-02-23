@@ -17,4 +17,8 @@ class Curso extends Model
         'startdate'
     ];
 
+    public function users() {
+        return $this->belongsToMany(User::class);
+    }
+
 }
